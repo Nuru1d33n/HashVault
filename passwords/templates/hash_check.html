@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Check Hash {% endblock title %}
+
+
+{% block content %}
+    <h1>Check If Hash Exists in Database</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Check Hash</button>
+    </form>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+    
+
+    {% if hash_type %}
+        <p><strong>Detected Hash Type:</strong> {{ hash_type }}</p>
+        <p><strong>Plaintext Password:</strong> {{ plaintext_password }}</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Go Back to Home</a>
+{% endblock content %}

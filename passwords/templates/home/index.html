@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <h1>Enter Passwords and Hashes</h1>
+
+    <!-- Display error message -->
+    {% if error_message %}
+        <div style="color: red;">
+            <strong>{{ error_message }}</strong>
+        </div>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form layout='inline' %}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        {{ hash_form.as_p }}
+        <button type="submit">Submit Hash</button>
+    </form> {% endcomment %}
+    
+    
+
+    <!-- Display entered passwords -->
+    {% if passwords %}
+        <h2>Entered Passwords</h2>
+        <ul>
+            {% for password in passwords %}
+                <li>{{ password }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <a href="{% url 'convert_passwords' %}">Update Hashes</a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const choiceFields = document.querySelectorAll('input[name="choice"]');
+            const inputField = document.getElementById('id_password_input').parentElement;
+            const textareaField = document.getElementById('id_password_text_area').parentElement;
+            const fileField = document.getElementById('id_password_file').parentElement;
+
+            function updateFieldVisibility() {
+                inputField.style.display = 'none';
+                textareaField.style.display = 'none';
+                fileField.style.display = 'none';
+
+                const selectedValue = document.querySelector('input[name="choice"]:checked').value;
+
+                if (selectedValue === 'input') {
+                    inputField.style.display = 'block';
+                } else if (selectedValue === 'textarea') {
+                    textareaField.style.display = 'block';
+                } else if (selectedValue === 'file') {
+                    fileField.style.display = 'block';
+                }
+            }
+
+            choiceFields.forEach(field => {
+                field.addEventListener('change', updateFieldVisibility);
+            });
+
+            // Initialize visibility on page load
+            updateFieldVisibility();
+        });
+    </script>
+</div>
+</html>
+
+{% endblock %}

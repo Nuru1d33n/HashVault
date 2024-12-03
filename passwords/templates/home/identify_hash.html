@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Identify Hash{% endblock %}
+
+{% block content %}
+<h1>Identify Hash</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Identify</button>
+</form>
+
+{% if hash_type %}
+    <p>The hash type is: <strong>{{ hash_type }}</strong></p>
+    {% if actual_password %}
+        <p>The actual password is: <strong>{{ actual_password }}</strong></p>
+    {% else %}
+        <p>No matching password found in the database.</p>
+    {% endif %}
+{% elif hash_value %}
+    <p>Hash type could not be identified.</p>
+{% endif %}
+{% endblock %}

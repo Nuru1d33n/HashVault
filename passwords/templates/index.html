@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+        
+
+{% block content %}
+    <h1>Welcome to the Password Hashing Tool</h1>
+    <p>Choose an action:</p>
+    <ul>
+        <li><a href="{% url 'handle_password' %}">Generate Password Hashes</a></li>
+        <li><a href="{% url 'check_hash' %}">Check Hash Existence</a></li>
+    </ul>
+
+{% endblock %}

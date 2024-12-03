@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Convert Passwords{% endblock %}
+
+{% block content %}
+<h1>Convert Passwords</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ hash_form.as_p }}
+    <button type="submit" class="btn btn-primary">Convert</button>
+</form>
+{% endblock %}
