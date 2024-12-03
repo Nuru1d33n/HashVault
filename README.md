@@ -1,90 +1,86 @@
+# 🚀 **HashVault**: A Powerful Password Hashing & Management Tool 🔐
 
-# HashVault
+**HashVault** is an open-source tool designed to help developers and security professionals manage password hashes securely and efficiently. With the growing importance of cybersecurity, having a tool that simplifies and strengthens password management is essential.
 
-## Generating a New SSH Key for GitHub
+## Key Features
 
-Follow these steps to generate a new SSH key and add it to your GitHub account.
+- **🛡️ Supports Multiple Hashing Algorithms**HashVault can generate password hashes using popular algorithms like SHA, MD5, Blake2, PBKDF2, and Scrypt, offering flexibility in securing passwords.
+- **🔍 Password Verification**Easily check if a password hash exists in the database, and retrieve metadata such as the hashing algorithm used.
+- **📂 Bulk Processing**Upload files with multiple passwords, and HashVault will efficiently process and store only the unique hashes, reducing storage redundancy.
+- **⚡ Simple Interface**A user-friendly interface for both manual entry and bulk input processing.
+- **🔑 Security Focused**
+  Built with best practices in password hashing and storage to ensure privacy and security.
 
-### 1. Generate a New SSH Key
+## Why HashVault?
 
-1. Open your terminal and run the following command to generate a new SSH key:
+In cybersecurity, handling passwords correctly is vital. **HashVault** is ideal for:
 
-   ```bash
-   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-   ```
+- **Penetration Testing**Quickly analyze and test the security of password storage systems.
+- **Security Audits**Detect weak or reused passwords in large datasets to improve your security posture.
+- **Education**
+  Experiment with various password hashing algorithms and learn how they work.
 
-   - Replace `your_email@example.com` with your GitHub email.
-   - When prompted for a file to save the key, press **Enter** to accept the default location, or specify a different file path if desired. The default location is `~/.ssh/id_rsa`.
+## Installation
 
-2. If prompted to enter a passphrase, you can either set a passphrase for added security or leave it blank by pressing **Enter**.
+To get started with HashVault, follow the instructions below:
 
-### 2. Add the SSH Key to the SSH Agent
+### Prerequisites
 
-To ensure your SSH key is added to the SSH agent, follow these steps:
+- Python 3.6+
+- Git (optional, for cloning the repository)
 
-1. Start the SSH agent:
-
-   ```bash
-   eval "$(ssh-agent -s)"
-   ```
-
-2. Add the SSH private key to the SSH agent:
-
-   ```bash
-   ssh-add ~/.ssh/id_rsa
-   ```
-
-   If you saved the SSH key under a different name or location, replace `id_rsa` with the appropriate filename.
-
-### 3. Add Your SSH Key to GitHub
-
-1. Display the SSH public key by running:
-
-   ```bash
-   cat ~/.ssh/id_rsa.pub
-   ```
-
-2. Copy the entire output of the above command.
-
-3. Go to **GitHub**:
-   - In the upper-right corner of any page, click your profile photo, then click **Settings**.
-   - In the left sidebar, click **SSH and GPG keys**.
-   - Click the **New SSH key** button.
-   - Paste your SSH public key into the "Key" field and give it a title (e.g., "My SSH Key").
-   - Click **Add SSH key**.
-
-### 4. Test the SSH Connection
-
-To ensure everything is working correctly, run the following command:
+### Clone the Repository
 
 ```bash
-ssh -T git@github.com
+git clone https://github.com/Nuru1d33n/HashVault.git
 ```
 
-You should see a message like this:
+### Install Dependencies
+
+Navigate to the project directory and install the required dependencies:
 
 ```
-Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+cd HashVault
+pip install -r requirements.txt
 ```
 
-### 5. Update Your Git Remote URL (if needed)
 
-If your repository is already set up with a different SSH key or URL, you may need to update the remote URL to use the new SSH key.
 
-1. To check your current remote URL, run:
+### Usage
 
-   ```bash
-   git remote -v
-   ```
+Run the application with the following command:
 
-2. If needed, update the remote URL to the new SSH URL:
+```
+python manage.py runserver
+```
 
-   ```bash
-   git remote set-url origin git@github.com:YourUsername/YourRepository.git
-   ```
 
-Replace `YourUsername` and `YourRepository` with the correct GitHub username and repository name.
+The application provides an interactive interface for:
 
----
+* Generating password hashes with different algorithms.
+* Verifying password hashes.
+* Processing bulk input files.
 
-Now you should be able to use the new SSH key for GitHub operations such as cloning, pushing, and pulling.
+Refer to the GUI for instructions on how to use each feature.
+
+## Contributing
+
+We welcome contributions! If you'd like to improve  **HashVault** , feel free to fork the repository, make changes, and submit a pull request.
+
+Before contributing, please review the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+
+**HashVault** is open-source software licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+* Thanks to the open-source community for providing the libraries used in this project.
+* Special thanks to [Algorithm X]() for their work on cryptography algorithms.
+
+## Contact
+
+Feel free to reach out for any questions or feedback!
+
+* Email: [Nuruadebileje@gmail.com]()
+* GitHub: [Nuru1d33n](https://github.com/yourusername)
